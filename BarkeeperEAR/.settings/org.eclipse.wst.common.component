@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="BarkeeperEAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="BarkeeperEJB.jar" deploy-path="/" handle="module:/resource/BarkeeperEJB/BarkeeperEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="BarkeeperJPA.jar" deploy-path="/lib" handle="module:/resource/BarkeeperJPA/BarkeeperJPA">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="BarkeeperWEB.war" deploy-path="/" handle="module:/resource/BarkeeperWEB/BarkeeperWEB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
