@@ -4,12 +4,33 @@ html {
 }
 body {
 	margin: 0;
-    margin-bottom: 100px !important; /* bottom = footer height */
+    margin-bottom: 80px !important; /* bottom = footer height */
 }
 footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     width: 100%;
+}
+.container{
+	width: 100% !important;
+}
+.post-list{
+	padding:30px 50px 50px 50px;
+}
+.post-container > *{
+	float: left;
+}
+.post-container{
+	width: 100%;
+}
+
+.post-container:after{
+    content: " "; 
+    display: block;
+    clear: both;
+}
+.post-votes{
+	height: 100%;
 }

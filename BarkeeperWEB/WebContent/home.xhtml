@@ -12,6 +12,9 @@
 		<ui:repeat var="post" value="#{postController.getPosts('top')}">
 		<div class="post-container">
 			<div class="post-votes">
+				<span class="upvoteButton">⇧</span>
+				<span class="voteScore">#{post.getVoteScore()}</span>
+				<span class="downvoteButton">⇩</span>
 			</div>
 			<div class="post-content">
 				<h1 class="post-title">#{post.getTitle()}</h1>

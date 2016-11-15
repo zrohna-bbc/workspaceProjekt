@@ -37,13 +37,18 @@ public class Post {
 		this.difficulty = difficulty;
 		this.timeInMinutes = timeInMinutes;
 	}
-	
-	
-	public Post(int id, String title, String description, int idAuthor) {
+
+
+	public Post(int id, String title, String description, int idAuthor, Date creationDate, List<Integer> upvoterIDs,
+			List<Integer> downvoterIDs) {
+		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.idAuthor = idAuthor;
+		this.creationDate = creationDate;
+		this.upvoterIDs = upvoterIDs;
+		this.downvoterIDs = downvoterIDs;
 	}
 
 
