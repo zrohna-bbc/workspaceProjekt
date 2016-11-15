@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+    	<h:outputStylesheet library="css" name="style.css"  />
+    	<style>
+    		.container{width: 100% !important;}
+    	</style>
+    </h:head>
+<h:body>
+	<b:navBar style="border-radius: 0;" brand="Barkeeper" brandHref="home.xhtml" inverse="true">
+		<b:navbarLinks pull="left">
+			<b:navLink value="New" href="#"/>
+			<b:navLink value="Top" href="#"/>
+			<b:navLink value="Discussed" href="#"/>
+		</b:navbarLinks>
+		<b:navbarLinks pull="right">
+			<b:navLink value="✎New Post" href="#"/>
+			<b:navLink value="Username" href="#"/>
+		</b:navbarLinks>
+	</b:navBar>
+</h:body>
+</h:html>

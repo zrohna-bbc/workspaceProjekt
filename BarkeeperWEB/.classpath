@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="libraries/BootsFaces-OSP-0.9.1-dist-default.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/BootsFaces-OSP-0.9.1-dist-default.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
