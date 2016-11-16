@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 	<h:head>
     	<h:outputStylesheet library="css" name="style.css"  />
+    	<h:outputScript library="js" name="script.js" />
     </h:head>
 <h:body>
 	<ui:include src="header.xhtml"></ui:include>
@@ -13,9 +14,11 @@
 		<div class="post-container">
 			<div class="post-votes">
 			<h:form>
-				<h:commandButton class="button upvote-button" action="#{postController.votePost(post.getId(), 1)}" style="#{post.isCurrentUserUpvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇧"/>
+				<h:commandButton class="button upvote-button upvote-button-#{post.getId()}" style="#{post.isCurrentUserUpvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇧">
+					<f:ajax event="click" execute="#{postController.doNothing()}" render="@none" onevent="votePost(#{post.getId()}, 0)"/>
+				</h:commandButton>
 				<br/><br/><span class="vote-score">#{post.getVoteScore()}</span><br/><br/>
-				<h:commandButton class="button downvote-button"  style="#{post.isCurrentUserDownvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇩"/>
+				<h:commandButton class="button downvote-button downvote-button-#{post.getId()}"  style="#{post.isCurrentUserDownvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇩"/>
 			</h:form>
 			</div>
 			<div class="post-content">

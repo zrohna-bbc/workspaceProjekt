@@ -65,5 +65,7 @@ public class PostController implements Serializable{
 		}
 		return "";
 	}
+	
+	public void doNothing(){}
 }
 
