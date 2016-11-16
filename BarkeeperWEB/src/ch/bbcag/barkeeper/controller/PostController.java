@@ -25,16 +25,17 @@ public class PostController implements Serializable{
 		upvoters.add(3);
 		List<Integer> downvoters = new ArrayList<Integer>();
 		downvoters.add(4);
+		String s = "apioafaöwsepfjawhug0pasngdböanjrgipaefra dvgkjbhaoeuifgbawegknaspigpvas vökadjbrfpainv puhr";
 		switch (sort) {
 		case "top":
-			UserSpecificPostData post1 = new UserSpecificPostData(new Post(1, "Post 1", "111111111", 1, new Date(System.currentTimeMillis()), upvoters, downvoters));
+			UserSpecificPostData post1 = new UserSpecificPostData(new Post(1, "Post 1", s+s+s+s+s+s+s+s+s+s, 1, new Date(System.currentTimeMillis()), upvoters, downvoters));
 			result.add(post1);
-//			UserSpecificPostData post2 = new UserSpecificPostData(new Post(2, "Post 2", "222222222", 2, new Date(System.currentTimeMillis()), upvoters, downvoters));
-//			result.add(post2);
-//			UserSpecificPostData post3 = new UserSpecificPostData(new Post(3, "Post 3", "333333333", 3, new Date(System.currentTimeMillis()), upvoters, downvoters));
-//			result.add(post3);
-//			UserSpecificPostData post4 = new UserSpecificPostData(new Post(4, "Post 4", "444444444", 4, new Date(System.currentTimeMillis()), upvoters, downvoters));
-//			result.add(post4);
+			UserSpecificPostData post2 = new UserSpecificPostData(new Post(2, "Post 2", s+s+s+s+s+s+s+s+s+s+s+s+s+s, 2, new Date(System.currentTimeMillis()), upvoters, downvoters));
+			result.add(post2);
+			UserSpecificPostData post3 = new UserSpecificPostData(new Post(3, "Post 3", s+s+s+s+s, 3, new Date(System.currentTimeMillis()), upvoters, downvoters));
+			result.add(post3);
+			UserSpecificPostData post4 = new UserSpecificPostData(new Post(4, "Post 4", "ag9rhaegrj", 4, new Date(System.currentTimeMillis()), upvoters, downvoters));
+			result.add(post4);
 			break;
 
 		case "new":
@@ -44,6 +45,25 @@ public class PostController implements Serializable{
 			break;
 		}
 		return result;
+	}
+	
+	/**
+	 * 
+	 * @param postId ID of the post to vote for.
+	 * @param voteValue Upvote: > 0, Downvote: < 0, Remove Vote: 0
+	 */
+	public String votePost(int postId, int voteValue){
+		if (voteValue > 0){
+			//TODO upvote post
+			System.out.println("upvote!" + postId);
+		}else if (voteValue < 0){
+			//TODO downvote post
+			System.out.println("downvote!" + postId);
+		}else{
+			//TODO remove votes
+			System.out.println("un-vote!" + postId);
+		}
+		return "";
 	}
 }
 

@@ -23,7 +23,9 @@ footer {
 	float: left;
 }
 .post-container{
+	margin-bottom: 50px;
 	width: 100%;
+	position: relative;
 }
 
 .post-container:after{
@@ -32,5 +34,34 @@ footer {
     clear: both;
 }
 .post-votes{
-	height: 100%;
+	width: 5%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.post-votes > *{
+	display: table;
+	margin: 0 auto;
+}
+.post-content{
+	width: 95%;
+	float: right;
+	border: 1px solid black;
+	padding: 20px;
+}
+.post-date{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+.post-username{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+.button{
+	cursor: pointer;
+	background: none;
+	border: none;
+	font-size: 20px;
 }

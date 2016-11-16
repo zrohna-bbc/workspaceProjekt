@@ -5,6 +5,7 @@ import java.util.List;
 
 public class UserSpecificPostData{
 	
+	private int id;
 	private String title;
 	private String description;
 	private String authorName;
@@ -19,6 +20,7 @@ public class UserSpecificPostData{
 
 	
 	public UserSpecificPostData(Post post){
+		id = post.getId();
 		title = post.getTitle();
 		description = post.getDescription();
 		authorName = "ID: " + post.getIdAuthor(); //TODO Get name by ID
@@ -32,6 +34,9 @@ public class UserSpecificPostData{
 		currentUserDownvoted = false; //TODO Check if ID of current user is in downvoterIDs
 	}
 
+	public int getId(){
+		return id;
+	}
 
 	public String getTitle() {
 		return title;
@@ -49,6 +54,7 @@ public class UserSpecificPostData{
 
 
 	public Date getCreationDate() {
+		
 		return creationDate;
 	}
 
