@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
 
 import ch.bbcag.barkeeper.model.Post;
 import ch.bbcag.barkeeper.model.UserSpecificPostData;
@@ -52,20 +55,9 @@ public class PostController implements Serializable{
 	 * @param postId ID of the post to vote for.
 	 * @param voteValue Upvote: > 0, Downvote: < 0, Remove Vote: 0
 	 */
-	public String votePost(int postId, int voteValue){
-		if (voteValue > 0){
-			//TODO upvote post
-			System.out.println("upvote!" + postId);
-		}else if (voteValue < 0){
-			//TODO downvote post
-			System.out.println("downvote!" + postId);
-		}else{
-			//TODO remove votes
-			System.out.println("un-vote!" + postId);
-		}
-		return "";
+	public void votePost(int postId, int voteValue){
+		System.out.println(postId+"|"+voteValue);
+		RequestContext.getCurrentInstance().execute("votePost("+postId+", "+voteValue + ")");
 	}
-	
-	public void doNothing(){}
 }
 

@@ -92,6 +92,5 @@ public class UserSpecificPostData{
 	public boolean isCurrentUserDownvoted() {
 		return currentUserDownvoted;
 	}
-	
 
 }

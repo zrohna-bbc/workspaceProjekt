@@ -1,5 +1,6 @@
 <h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"  
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -14,12 +15,15 @@
 		<div class="post-container">
 			<div class="post-votes">
 			<h:form>
-				<h:commandButton class="button upvote-button upvote-button-#{post.getId()}" style="#{post.isCurrentUserUpvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇧">
-					<f:ajax event="click" execute="#{postController.doNothing()}" render="@none" onevent="votePost(#{post.getId()}, 0)"/>
-				</h:commandButton>
-				<br/><br/><span class="vote-score">#{post.getVoteScore()}</span><br/><br/>
-				<h:commandButton class="button downvote-button downvote-button-#{post.getId()}"  style="#{post.isCurrentUserDownvoted() eq true ? 'color:orange;' : 'color:black;'}" value="⇩"/>
-			</h:form>
+				<b:commandButton icon="menu-up" class="button upvote-button upvote-button-#{post.getId()}" style="#{post.isCurrentUserUpvoted() eq true ? 'color:orange;' : 'color:black;'}">
+					<f:ajax ajax="true" event="click" listener="#{postController.votePost(post.getId(), 0)}" render="@none"/>
+				</b:commandButton>
+				</h:form>
+				<br/><span class="vote-score">#{post.getVoteScore()}</span><br/>
+				<h:form>
+				<b:commandButton icon="menu-down" class="button downvote-button downvote-button-#{post.getId()}"  style="#{post.isCurrentUserDownvoted() eq true ? 'color:orange;' : 'color:black;'}">
+				</b:commandButton>
+				</h:form>
 			</div>
 			<div class="post-content">
 				<h1 class="post-title">#{post.getTitle()}</h1>
