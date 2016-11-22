@@ -30,8 +30,8 @@ public class UserSpecificPostData{
 		difficulty = post.getDifficulty();
 		timeInMinutes = post.getTimeInMinutes();
 		voteScore = post.getUpvoterIDs().size() - post.getDownvoterIDs().size();
-		currentUserUpvoted = true; //TODO Check if ID of current user is in upvoterIDs
-		currentUserDownvoted = false; //TODO Check if ID of current user is in downvoterIDs
+		currentUserUpvoted = post.getUpvoterIDs().contains(1); //TODO Check if ID of current user is in upvoterIDs
+		currentUserDownvoted = post.getDownvoterIDs().contains(1); //TODO Check if ID of current user is in downvoterIDs
 	}
 
 	public int getId(){

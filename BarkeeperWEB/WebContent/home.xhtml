@@ -10,20 +10,19 @@
     </h:head>
 <h:body>
 	<ui:include src="header.xhtml"></ui:include>
-	<div class="post-list">
+	<div class="post-list" id="post-list">
 		<ui:repeat var="post" value="#{postController.getPosts('top')}">
 		<div class="post-container">
 			<div class="post-votes">
 			<h:form>
 				<b:commandButton icon="menu-up" class="button upvote-button upvote-button-#{post.getId()}" style="#{post.isCurrentUserUpvoted() eq true ? 'color:orange;' : 'color:black;'}">
-					<f:ajax ajax="true" event="click" listener="#{postController.votePost(post.getId(), 0)}" render="@none"/>
+					<f:ajax ajax="true" event="click" listener="#{postController.upvoteButtonPress(post.getId(), post.isCurrentUserUpvoted())}" render="@form"/>
 				</b:commandButton>
-				</h:form>
 				<br/><span class="vote-score">#{post.getVoteScore()}</span><br/>
-				<h:form>
 				<b:commandButton icon="menu-down" class="button downvote-button downvote-button-#{post.getId()}"  style="#{post.isCurrentUserDownvoted() eq true ? 'color:orange;' : 'color:black;'}">
+					<f:ajax ajax="true" event="click" listener="#{postController.downvoteButtonPress(post.getId(), post.isCurrentUserDownvoted())}" render="@form"/>
 				</b:commandButton>
-				</h:form>
+			</h:form>
 			</div>
 			<div class="post-content">
 				<h1 class="post-title">#{post.getTitle()}</h1>

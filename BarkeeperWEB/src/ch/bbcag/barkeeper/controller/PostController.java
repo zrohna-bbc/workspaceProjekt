@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-
-import org.primefaces.context.RequestContext;
 
 import ch.bbcag.barkeeper.model.Post;
 import ch.bbcag.barkeeper.model.UserSpecificPostData;
@@ -19,15 +16,19 @@ import ch.bbcag.barkeeper.model.UserSpecificPostData;
 public class PostController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	private static List<Integer> upvoters = new ArrayList<Integer>();
+	private static List<Integer> downvoters = new ArrayList<Integer>();
 	
-	public List<UserSpecificPostData> getPosts(String sort){
-		List<UserSpecificPostData> result = new ArrayList<UserSpecificPostData>();
-		List<Integer> upvoters = new ArrayList<Integer>();
+	
+	static{
 		upvoters.add(1);
 		upvoters.add(2);
 		upvoters.add(3);
-		List<Integer> downvoters = new ArrayList<Integer>();
 		downvoters.add(4);
+	}
+	
+	public List<UserSpecificPostData> getPosts(String sort){
+		List<UserSpecificPostData> result = new ArrayList<UserSpecificPostData>();
 		String s = "apioafaöwsepfjawhug0pasngdböanjrgipaefra dvgkjbhaoeuifgbawegknaspigpvas vökadjbrfpainv puhr";
 		switch (sort) {
 		case "top":
@@ -56,8 +57,35 @@ public class PostController implements Serializable{
 	 * @param voteValue Upvote: > 0, Downvote: < 0, Remove Vote: 0
 	 */
 	public void votePost(int postId, int voteValue){
-		System.out.println(postId+"|"+voteValue);
-		RequestContext.getCurrentInstance().execute("votePost("+postId+", "+voteValue + ")");
+		if (voteValue > 0){
+			if (downvoters.contains(new Integer(1))){
+				downvoters.remove(new Integer(1));
+			}if (!upvoters.contains(new Integer(1))){
+				upvoters.add(new Integer(1));
+			}
+		}else if (voteValue < 0){
+			if (upvoters.contains(new Integer(1))){
+				upvoters.remove(new Integer(1));
+			}if (!downvoters.contains(new Integer(1))){
+				downvoters.add(new Integer(1));
+			}
+		}else{
+			if (upvoters.contains(new Integer(1))){
+				upvoters.remove(new Integer(1));
+			}if (downvoters.contains(new Integer(1))){
+				downvoters.remove(new Integer(1));
+			}
+		}
+	}
+	
+	public void upvoteButtonPress(int postId, boolean alreadyClicked){
+		if (alreadyClicked) votePost(postId, 0);
+		else votePost(postId, 1);
+	}
+	
+	public void downvoteButtonPress(int postId, boolean alreadyClicked){
+		if (alreadyClicked) votePost(postId, 0);
+		else votePost(postId, -1);
 	}
 }
 
